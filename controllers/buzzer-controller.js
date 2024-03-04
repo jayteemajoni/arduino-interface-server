@@ -1,20 +1,20 @@
 import asyncHandler from "express-async-handler";
 import { serialPort } from "../utils/serial.js";
 
-// @desc          Change LED state
+// @desc          Change Buzzer state
 // @route         POST /api/led
 // @access        Public
-export const changeLEDState = asyncHandler(async (req, res) => {
+export const changeBuzzerState = asyncHandler(async (req, res) => {
   const { action } = req.body;
 
   switch (action.toUpperCase()) {
     case "ON": {
-      serialPort.write("lh");
-      return res.status(200).json({ message: "LED is ON" });
+      serialPort.write("bh");
+      return res.status(200).json({ message: "Buzzer is ON" });
     }
-    case "OFF" : {
-      serialPort.write("ll");
-      return res.status(200).json({ message: "LED is OFF" });
+    case "OFF": {
+      serialPort.write("bl");
+      return res.status(200).json({ message: "Buzzer is OFF" });
     }
     default: {
       return res.status(404).json({ message: "UNKWON ACTION!" });

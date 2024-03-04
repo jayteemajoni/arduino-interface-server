@@ -3,6 +3,6 @@ import { changeLEDState } from "../controllers/led-controller.js";
 
 const router = express.Router();
 
-router.post(`/led`, changeLEDState);
+router.post(`/`, changeLEDState);
 
 export default router;
